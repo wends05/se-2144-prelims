@@ -27,6 +27,7 @@ export const inputCharacter = (value: string) => {
       (value == "0" && resultDisplay!.innerHTML != "")) {
     
     
+        
     if (tempDisplay.startsWith("0")) {
       tempDisplay = ""
     }
@@ -34,11 +35,11 @@ export const inputCharacter = (value: string) => {
 
     if (!tempDisplay.includes(".") || value != ".") {
       tempDisplay += value
+      tempDisplay = tempDisplay.replace("x", "*")
     }
   }
 
   if (value == "=" || value == "Enter") {
-    tempDisplay = tempDisplay.replace("x", "*")
     equationDisplay!.innerHTML = tempDisplay
     const x = tempDisplay
     try {
