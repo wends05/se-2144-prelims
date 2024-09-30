@@ -40,7 +40,7 @@ export const inputCharacter = (value: string) => {
   if (value == "=" || value == "Enter") {
     tempDisplay = tempDisplay.replace("x", "*")
     equationDisplay!.innerHTML = tempDisplay
-    const x = resultDisplay!.innerHTML
+    const x = tempDisplay
     try {
       console.log(x)
       const res = eval(x)
@@ -56,6 +56,7 @@ export const inputCharacter = (value: string) => {
         console.log(tempDisplay)
       }
     } catch (e) {
+      console.log(e)
       resultDisplay!.innerHTML = "Math Error"
       return;
     }
