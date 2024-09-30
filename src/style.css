@@ -1,19 +1,26 @@
 :root {
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
-
+  color: white;
+  display: flex;
   height: 100vh;
   width: 100vw;
-  display: flex;
-  justify-content: center;
   align-items: center;
+  justify-content: center;
+}
 
-  color: white;
+body {
+  width: 100%;
+  height: 100%;
   background-color: #242424;
+}
 
-  font-synthesis: none;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+#app {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
 }
 
 .calculator-container {
@@ -40,6 +47,7 @@
 .result {
   font-size: xx-large;
 }
+
 .special-buttons {
   background-color: rgb(67, 67, 67);
   border-radius: 20px;
@@ -75,3 +83,4 @@ button {
 .two-space {
   grid-column: span 2 / span 2;
 }
+

@@ -1,14 +1,12 @@
 import displayHello from './displayHello'
-import { inputCharacter } from './helpers'
+import { inputCharacter, offCalculator, onCalculator } from './helpers'
 import './style.css'
 
 document.querySelector<HTMLDivElement>('#app')!.innerHTML = /*html*/ `
   <div>
     <div class="calculator-container">
-      <div class="calculator-display">
-        <div id="equation">
-          equation
-        </div>
+      <div class="calculator-display" id="calculator-display">
+        <div id="equation"></div>
         <div id="result" class="result"></div>    
       </div>
       <div class="special-buttons">
@@ -16,7 +14,7 @@ document.querySelector<HTMLDivElement>('#app')!.innerHTML = /*html*/ `
         <button id="bye">bye</button>
       </div>
       <div class="buttons">
-        <button class="two-space">AC</button>
+        <button id="AC" class="two-space">AC</button>
         <button>C</button>
         <button>/</button>
         <button>7</button>
@@ -37,30 +35,46 @@ document.querySelector<HTMLDivElement>('#app')!.innerHTML = /*html*/ `
       </div>
     </div>
   </div>
-`
+`;
 
+export let config = {
+  isOn: false,
+  isTransitioning: false
+};
 
-document.querySelector<HTMLButtonElement>("#hello")
+export const calculatorDisplay = document.querySelector<HTMLDivElement>("#calculator-display")
+export const resultDisplay = document.querySelector<HTMLDivElement>("#result")
+export const equationDisplay = document.querySelector<HTMLDivElement>("#equation")
+export const byeButton = document.querySelector<HTMLButtonElement>("#bye")
+const ACButton = document.querySelector<HTMLButtonElement>("#AC");
+const helloButton = document.querySelector<HTMLButtonElement>("#hello")
 
 document.addEventListener("keydown", e => {
   console.log(e.key)
   inputCharacter(e.key)
-})
+});
 
 const allButtons = document.querySelectorAll("button")
 allButtons.forEach(button => {
   button.addEventListener("click", () => {
-
-
     console.log(button.innerHTML)
     inputCharacter(button.innerHTML)
-  })
-})
+  });
+});
 
-export const resultDisplay = document.querySelector<HTMLDivElement>("#result")
-export const equationDisplay = document.querySelector<HTMLDivElement>("#equation")
-const helloButton = document.querySelector<HTMLButtonElement>("#hello")
 helloButton?.addEventListener("click", () => {
-  console.log(displayHello())
+  onCalculator();
   resultDisplay!.innerHTML = displayHello()
-})
+});
+
+byeButton?.addEventListener("click", () => {
+  offCalculator();
+});
+
+ACButton?.addEventListener("click", () => {
+  onCalculator();
+});
+
+document.addEventListener("DOMContentLoaded", () => {
+  console.log("document is loaded");
+});
