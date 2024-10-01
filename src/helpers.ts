@@ -21,14 +21,14 @@ export const inputCharacter = (value: string) => {
       tempDisplay = "0"
     }
   }
-
+  
+  const operators = ["-", "+", "x", "/", ".", "*"]
+  
   if (Number.parseInt(value) ||
-      ["-", "+", "x", "/", ".", "*"].includes(value) ||
+      operators.includes(value) ||
       (value == "0" && resultDisplay!.innerHTML != "")) {
-    
-    
         
-    if (tempDisplay.startsWith("0")) {
+    if (tempDisplay.startsWith("0") && tempDisplay.length == 1 && !operators.includes(value)) {
       tempDisplay = ""
     }
     console.log(Number.parseInt(value))
