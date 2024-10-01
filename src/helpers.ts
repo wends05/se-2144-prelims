@@ -1,8 +1,9 @@
 import { hellos } from "./displayHello"
 import { equationDisplay, config, resultDisplay, calculatorDisplay } from "./main"
 
-
 const MAX_CHARACTERS = 10
+let canAddDecimal = true
+let current_number = ""
 
 export const inputCharacter = (value: string) => {
 
@@ -46,7 +47,6 @@ export const inputCharacter = (value: string) => {
       console.log(x)
       const res = eval(x)
 
-
       if (res == Infinity || isNaN(res)) {
         throw Error
       }
@@ -69,6 +69,7 @@ export const inputCharacter = (value: string) => {
   }
 
   let final_display = tempDisplay
+
   if (final_display.length > MAX_CHARACTERS) {
     final_display = final_display.slice(0, MAX_CHARACTERS)
     console.log(`current display (max ${MAX_CHARACTERS} characters), `, final_display)
@@ -80,12 +81,15 @@ export const inputCharacter = (value: string) => {
   console.log(final_display)
   console.log(tempDisplay)
 
-  resultDisplay!.innerHTML = final_display
+  if (final_display.includes(".")) {
+    canAddDecimal = false
+  }
+  if (operators.includes("value")) {
+    canAddDecimal = true
+    current_number = ""
+  }
 
-  // implement check only for 8 characters
-  // splice up to 8 characters
-  // 2 decimal places
-  // up to 6 digits
+  resultDisplay!.innerHTML = final_display
 }
 
 export const onCalculator = () => {

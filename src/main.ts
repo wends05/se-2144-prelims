@@ -67,13 +67,9 @@ helloButton?.addEventListener("click", () => {
   resultDisplay!.innerHTML = displayHello()
 });
 
-byeButton?.addEventListener("click", () => {
-  offCalculator();
-});
+byeButton?.addEventListener("click", offCalculator);
 
-ACButton?.addEventListener("click", () => {
-  onCalculator();
-});
+ACButton?.addEventListener("click", onCalculator);
 
 document.addEventListener("DOMContentLoaded", () => {
   console.log("document is loaded");
