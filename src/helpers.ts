@@ -45,6 +45,11 @@ export const inputCharacter = (value: string) => {
     try {
       console.log(x)
       const res = eval(x)
+
+
+      if (res == Infinity || isNaN(res)) {
+        throw Error
+      }
       console.log(res);
       tempDisplay = res.toString()
       if (tempDisplay.split(".").length == 2) {
